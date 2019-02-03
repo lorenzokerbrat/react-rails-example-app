@@ -1,7 +1,37 @@
-.features-page {
-
+.features-tiles {
+    display: flex;
+    flex-direction: column;
 }
 
 .feature-tile {
+    display: inline-block;
 
+    margin: 30px;
+    padding: 10px 20px;
+    
+    width: 250px;
+    height: 180px;
+
+    cursor: pointer;
+    border: 1px solid darkgray;
+    border-radius: 20px;
+
+    transition: background-color .4s ease;
+}
+.feature-tile:hover {
+    background-color: rgba(47, 192, 185, 0.377);
+}
+
+.feature-tile .name {
+    font-size: 24px;
+}
+
+.tests-preview {
+    display: flex;
+    flex-direction: column;
+}
+.tests-preview .test {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
 }

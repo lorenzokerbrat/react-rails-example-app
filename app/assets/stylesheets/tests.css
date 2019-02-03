@@ -1,0 +1,48 @@
+.tests.page i.previous {
+    cursor: pointer;
+}
+.tests.page i.previous:hover {
+    color: rgba(47, 192, 161, 0.377);
+}
+
+.tests-list {
+    margin: 30px 10px;
+
+    color: black;
+}
+
+.tests-list .test {
+    margin: 5px;
+    padding: 8px 10px;
+
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #eee;
+    
+    max-width: 60%;
+
+    transition: all .5s ease;
+}
+
+.tests-list .test:hover {
+    background-color: #ccc;
+}
+
+
+.test.Passed {
+    background-color: rgba(172, 255, 47, 0.295);
+}
+.tests-list .test.Passed:hover {
+    background-color: rgba(172, 255, 47, 0.459);
+}
+
+.test.Failed {
+    background-color: rgba(255, 47, 47, 0.295);
+}
+.tests-list .test.Failed:hover {
+    background-color: rgba(255, 47, 47, 0.459);
+}
+
+.tests-list .test .status {
+    float: right;
+}

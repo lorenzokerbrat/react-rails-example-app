@@ -1,4 +1,48 @@
-.main {
-    color: #555;
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555;
+    overflow: hidden;
+}
+
+.pages {
+    display: flex;
+
+    width: 200%;
+}
+
+.pages .page {
+    flex: 1;
+    margin: 20px 30px;
+
+    height: 100%;
+    width: 90vw;
+}
+
+.go-back {
+    cursor: pointer;
+    font-weight: bold;
+}
+.go-back:hover {
+    color: #222;
+}
+
+button,
+select {    
+    background: transparent;
+    border-radius: 5px;
+
+    transition: background-color .4s ease;
+}
+button:hover,
+select:hover {
+    background-color: #bbb;
+}
+
+button {
+    cursor: pointer;
+    padding: 5px 8px;
+}
+
+select {
+    padding: 3px 0;
 }
