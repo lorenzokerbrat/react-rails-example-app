@@ -5,7 +5,11 @@ class FeaturesPage extends React.Component {
     shouldComponentUpdate = (nextProps) => nextProps.shouldUpdate === true
     
     addFeature = () => {
-        // ?????
+        fetch('/features/new', {
+            method: 'GET',
+        })
+        .then(a => console.log(a))
+        .catch(err => console.error(err))
     }
 
     render = () => {

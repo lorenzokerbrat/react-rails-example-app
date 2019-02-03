@@ -3,6 +3,7 @@ var PropTypes = require("prop-types")
 
 var FeaturesPage = require('./FeaturesPage.jsx')
 var TestsPage = require('./TestsPage.jsx')
+
 // require('font-awesome/css/font-awesome.min.css')
 
 class Main extends React.Component {
@@ -10,12 +11,22 @@ class Main extends React.Component {
         super()
         this.state = {
             current: 'features',
+            features: [],
             selectedFeature: null,
             selectedTest: null,
         }
     }
 
     componentDidMount = () => {
+        fetch('/features', {
+            method: 'GET'
+        })
+        .then(features => {
+            console.log(features)
+            this.setState({ features })
+        })
+        .catch(err => console.error(err))
+
         document.onkeydown = (e) => {
             if (e.key === 'Tab') e.preventDefault()
         }
@@ -53,6 +64,8 @@ class Main extends React.Component {
             <div className='pages' ref='pages'>
 
                 <FeaturesPage shouldUpdate={this.state.current === 'features'}
+                    features={this.state.features}
+
                     selectFeature={this.selectFeature}
                 />
 

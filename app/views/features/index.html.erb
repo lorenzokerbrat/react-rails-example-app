@@ -1,0 +1,17 @@
+<h1>Listing features</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Tests</th>
+    <th></th>
+  </tr>
+ 
+  <% @features.each do |feature| %>
+    <tr>
+      <td><%= feature.name %></td>
+      <td><%= feature.tests_id %></td>
+      <td><%= link_to 'Show', feature_path(feature) %></td>
+    </tr>
+  <% end %>
+</table>
