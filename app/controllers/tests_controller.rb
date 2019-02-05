@@ -6,4 +6,12 @@ class TestsController < ApplicationController
     def show
         render json: Test.where('feature_id': params[:id]).all.to_json, each_serializer: TestSerializer
     end
+
+    def create
+        @test = Test.new({ name: 'New test', status: 'Undefined', feature_id: params[:feature_id] })
+        @test.save
+        render json: @test.to_json, each_serializer: TestSerializer
+    end
+
+
 end

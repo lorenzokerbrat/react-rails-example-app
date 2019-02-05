@@ -3,14 +3,6 @@ var PropTypes = require("prop-types")
 
 class FeaturesPage extends React.Component {
     shouldComponentUpdate = (nextProps) => nextProps.shouldUpdate === true
-    
-    addFeature = () => {
-        fetch('/features/new', {
-            method: 'GET',
-        })
-        .then(a => console.log(a))
-        .catch(err => console.error(err))
-    }
 
     render = () => {
         let features = this.props.features
@@ -19,7 +11,7 @@ class FeaturesPage extends React.Component {
 
             <h2>Project Features</h2>
 
-            <button onClick={this.addFeature}>Create new feature</button>
+            <button onClick={this.props.addFeature}>Create new feature</button>
 
             <div className='feature-tiles'>
                 {features.map((feature, key) => {
@@ -55,7 +47,12 @@ class FeaturesPage extends React.Component {
 }
 
 FeaturesPage.propTypes = {
+    shouldUpdate: PropTypes.bool.isRequired,
 
+    features: PropTypes.arrayOf(PropTypes.object).isRequired,
+
+    addFeature: PropTypes.func,
+    selectFeature: PropTypes.func,
 }
 
 module.exports = FeaturesPage

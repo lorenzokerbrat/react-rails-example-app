@@ -1,5 +1,4 @@
 var React = require("react")
-var PropTypes = require("prop-types")
 
 var FeaturesPage = require('./FeaturesPage.jsx')
 var TestsPage = require('./TestsPage.jsx')
@@ -64,12 +63,23 @@ class Main extends React.Component {
 
     selectTest = (selectedTest) => this.setState({ selectedTest })
 
-    updateFeature = (feature) => {
-        // ???
+    addFeature = () => {
+        fetch('/features/new', {
+            method: 'GET',
+        })
+        .then(res => res.json())
+        .then(feature => {
+            feature.tests = []
+
+            this.setState({ features: [...this.state.features, feature] })
+        })
+        .catch(err => console.error(err))
     }
 
-    updateTest = (feature, test) => {
-        // ???
+    updateFeatures = () => {
+        let features = this.state.features
+
+        this.setState({ features })
     }
 
     render = () => {
@@ -81,6 +91,7 @@ class Main extends React.Component {
                     features={this.state.features}
 
                     selectFeature={this.selectFeature}
+                    addFeature={this.addFeature}
                 />
 
                 <TestsPage shouldUpdate={this.state.current === 'tests'}
@@ -88,18 +99,13 @@ class Main extends React.Component {
                     selectedTest={this.state.selectedTest}
 
                     selectTest={this.selectTest}
-                    updateFeature={this.updateFeature}
-                    updateTest={this.updateTest}
+                    updateFeatures={this.updateFeatures}
                     switchToPage={this.switchToPage}
                 />
 
             </div>
         </div>
     }
-
-}
-
-Main.propTypes = {
 
 }
 

@@ -12,12 +12,25 @@ class TestsPage extends React.Component {
             name: 'New test',
             status: 'Undefined'
         })
-        this.props.updateFeature(feature)
+
+        // fetch('/tests/?feature_id=' + feature.id, {
+        //     method: 'POST',
+        // })
+        // .then(res => res.json())
+        // .then(test => {
+        //     console.log(test);
+            
+        //     feature.tests.push(test)
+
+            this.props.updateFeatures()
+        // })
+        // .catch(err => console.error(err))
     }
 
     setTestStatus = (test, e) => {
         test.status = e.target.value
-        this.props.updateTest(this.props.feature, test) // or updateFeature ?????????
+
+        this.props.updateFeatures()
     }
 
     render = () => {
@@ -27,9 +40,11 @@ class TestsPage extends React.Component {
             <div className='tests page'>
         
                 <span className='go-back' onClick={this.goBack}>
-                    Go back
+                    {'< Go back'}
                 </span>
-                <h2>Feature {feature.name}</h2>
+                <h2>Feature "{feature.name}"</h2>
+
+                <h4>Tests</h4>
 
                 <button onClick={this.addTest}>Create new test</button>
 
@@ -40,7 +55,7 @@ class TestsPage extends React.Component {
 
                             {test.name}
                             
-                            <select className='status'
+                            <select className='status' ref={'status'+key}
                                 defaultValue={test.status || 'Undefined'}
                                 onChange={(e) => this.setTestStatus(test, e)}>
                                 <option value='Undefined'>Undefined</option>
@@ -59,7 +74,15 @@ class TestsPage extends React.Component {
 }
 
 TestsPage.propTypes = {
+    shouldUpdate: PropTypes.bool,
 
+    feature: PropTypes.object,
+    selectedTest: PropTypes.object,
+
+    selectTest: PropTypes.func,
+    updateFeature: PropTypes.func,
+    updateTest: PropTypes.func,
+    switchToPage: PropTypes.func,
 }
 
 module.exports = TestsPage

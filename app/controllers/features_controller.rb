@@ -8,17 +8,20 @@ class FeaturesController < ApplicationController
     end
 
     def new
+        @feature = Feature.new({ name: 'New feature' })
+        @feature.save
+        render json: @feature.to_json, each_serializer: FeatureSerializer
     end
     
-    def create
-        @feature = Feature.new(feature_params)
+    # def create
+    #     @feature = Feature.new(feature_params)
  
-        @feature.save
-        redirect_to @feature
-    end
+    #     @feature.save
+    #     redirect_to @feature
+    # end
 
-    private
-        def feature_params
-            params.require(:feature).permit(:name, :tests)
-        end
+    # private
+    #     def feature_params
+    #         params.require(:feature).permit(:name, :tests)
+    #     end
 end
