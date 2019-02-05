@@ -29,6 +29,13 @@
 }
 
 
+.test.Undefined {
+    background-color: rgba(128, 128, 128, 0.295);
+}
+.tests-list .test.Undefined:hover {
+    background-color: rgba(68, 68, 68, 0.459);
+}
+
 .test.Passed {
     background-color: rgba(172, 255, 47, 0.295);
 }

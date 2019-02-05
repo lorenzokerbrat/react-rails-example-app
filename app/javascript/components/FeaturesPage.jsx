@@ -15,14 +15,6 @@ class FeaturesPage extends React.Component {
     render = () => {
         let features = this.props.features
 
-        ///////
-        features = [
-            { name: 'a', tests: [{name: 'eeeeeee', status: 'Passed'}, {name: 'eeeeeee', status: 'Passed'}, {name: 'eeeeeee', status: 'Failed'}, {name: 'eeeeeee', status: 'Failed'}] },
-            { name: 'b', tests: [{name: 'eeeeeee', status: 'Failed'}] },
-            { name: 'c', tests: [] },
-        ]
-        ///////
-
         return <div className='features page'>
 
             <h2>Project Features</h2>

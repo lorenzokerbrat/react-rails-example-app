@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Feature.destroy_all
+Test.destroy_all
+
+f1 = Feature.create({name: "Have a features page" })
+f2 = Feature.create({name: "Have a tests page" })
+f1.tests.create({ name: "features should have a name", status: "Passed", feature_id: 1 })
+f1.tests.create({ name: "features should have a list of tests", status: "Passed", feature_id: 1 })
+f2.tests.create({ name: "tests should have a name", status: "Undefined", feature_id: 2 })

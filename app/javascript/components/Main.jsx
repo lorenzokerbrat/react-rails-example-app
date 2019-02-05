@@ -21,9 +21,23 @@ class Main extends React.Component {
         fetch('/features', {
             method: 'GET'
         })
+        .then(res => res.json())
         .then(features => {
-            console.log(features)
-            this.setState({ features })
+            
+            let remaining = features.length
+            for (let feature of features)
+                fetch('/tests/' + feature.id, {
+                    method: 'GET'
+                })
+                .then(res => res.json())
+                .then(tests => {
+                    
+                    feature.tests = tests
+                    remaining--
+                    if (remaining === 0)
+                        this.setState({ features })
+                })
+                .catch(err => console.error(err))
         })
         .catch(err => console.error(err))
 

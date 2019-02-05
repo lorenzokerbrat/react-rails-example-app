@@ -23,17 +23,6 @@ class TestsPage extends React.Component {
     render = () => {
         let feature = this.props.feature
 
-        ///////
-        feature = {
-            name: 'feature_',
-            tests: [
-                { name: 'test_', status: 'Undefined' },
-                { name: 'test_', status: 'Passed' },
-                { name: 'test_', status: 'Failed' },
-            ]
-        }
-        ///////
-
         return feature ?
             <div className='tests page'>
         

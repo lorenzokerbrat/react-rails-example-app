@@ -1,12 +1,10 @@
 class FeaturesController < ApplicationController
     def index
-        @features = Feature.all
-
-        render json: JSON.pretty_generate(@features.to_json)
+        render json: Feature.all.to_json, each_serializer: FeatureSerializer
     end
 
     def show
-        @feature = Feature.find(params[:id])
+        render json: Feature.find(params[:id]).to_json, each_serializer: FeatureSerializer
     end
 
     def new

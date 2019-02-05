@@ -14,15 +14,14 @@ ActiveRecord::Schema.define(version: 20190203191915) do
 
   create_table "features", force: :cascade do |t|
     t.string "name"
-    t.integer "tests_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tests_id"], name: "index_features_on_tests_id"
   end
 
   create_table "tests", force: :cascade do |t|
     t.string "name"
     t.string "status"
+    t.integer "feature_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
